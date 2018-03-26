@@ -13,6 +13,7 @@ class Producto(models.Model):
     color= models.CharField(max_length=1,choices=COLORES,default='O')
     MATERIALES=(('A','Acero'),('O','Oro'),('P','Plata'),('C','Cobre'),('B','Bisuteria'))
     material= models.CharField(max_length=1,choices=MATERIALES,default='A')
+    thumb= models.ImageField(default='default.png',blank=True)
 
     def Nombre_Productos(self):
         cadena= "{0}, {1}"
@@ -25,12 +26,12 @@ class Comprador(models.Model):
     Nombre_Pila_Vendedor = models.CharField(max_length=10)
     Apellido_Paterno_Vendedor= models.CharField(max_length=10)
     Apellido_Materno_Vendedor= models.CharField(max_length=10)
-    Correo= models.EmailField()
-    Contraseña= models.CharField(max_length=20)
-    Clave_Vendedor = models.AutoField(primary_key=True)
+    Correo= models.EmailField(primary_key=True)
+    Contra = models.CharField(max_length=50,blank=False)
+
 
     def __str__(self):
-        return "{0}, {1} {2}".format(self.Clave_Vendedor,self.Nombre_Pila_Vendedor,self.Apellido_Paterno_Vendedor)
+        return "{0}, {1} {2}".format(self.Nombre_Pila_Vendedor,self.Apellido_Paterno_Vendedor,self.Correo)
 
 
 
